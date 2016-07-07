@@ -6,10 +6,10 @@ import json
 
 app = Flask(__name__)
 
-MONGODB_HOST = 'localhost'
-MONGODB_PORT = 27017
-DBS_NAME = 'GOT'
-# MONGO_URI = 'mongodb://root:database@ds015335.mlab.com:15335/heroku_t0mvqtlr'
+MONGODB_HOST = 'ds017205.mlab.com'
+MONGODB_PORT = 17205
+DBS_NAME = 'heroku_lmm9rvpt'
+MONGO_URI = 'mongodb://root:database@ds017205.mlab.com:17205/heroku_lmm9rvpt'
 COLLECTION_NAME = 'characterDeaths'
 FIELDS = {'Name': True, 'Allegiances': True, 'Nobility': True, 'Book_of_Death': True,'Gender': True, '_id': False}
 
@@ -21,7 +21,7 @@ def index():
 
 @app.route("/GOT/CharacterDeaths")
 def GOTChar():
-    connection = MongoClient(MONGODB_HOST, MONGODB_PORT)
+    connection = MongoClient(MONGO_URI)
     collection = connection[DBS_NAME][COLLECTION_NAME]
     characters = collection.find(projection=FIELDS, limit=1000)
     json_charDeaths = []

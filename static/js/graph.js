@@ -134,7 +134,7 @@ function makeGraphs(error, dataJson, dataBattlesJson) {
     .dimension(nobilityDim)
     .group(deathsByNobility);
 
-    
+    // battles logic
     var ndxbat = crossfilter(dataBattles);
 
     var attackerDim = ndxbat.dimension(function(d){
@@ -157,27 +157,31 @@ function makeGraphs(error, dataJson, dataBattlesJson) {
 
     var attackerChart = dc.pieChart("#chart­attacker");
     attackerChart
-    .width(560)
-    .height(560)
+    .width(300)
+    .height(300)
     .innerRadius(50)
     .dimension(attackerDim)
     .group(attackerByNumber);
     
     var deffenderChart = dc.pieChart("#chart­deffender");
     deffenderChart
-    .width(560)
-    .height(560)
+    .width(300)
+    .height(300)
     .innerRadius(50)
     .dimension(deffenderDim)
     .group(deffenderByNumber);
 
     var battleChart = dc.pieChart("#chart­battle-type");
     battleChart
-    .width(250)
-    .height(250)
+    .width(300)
+    .height(300)
     .innerRadius(50)
     .dimension(battleTypeDim)
     .group(battleTypeByNumber);
+
+
+
+    
 
     dc.renderAll();
 

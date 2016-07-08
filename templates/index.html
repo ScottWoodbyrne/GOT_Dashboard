@@ -11,7 +11,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>
     jQuery(window).load(function () {
-        jQuery('#overlay').fadeOut(5000);
+        jQuery('#overlay').fadeOut(8000);
     })
     </script>
 </head>
@@ -40,7 +40,9 @@
                 <div class="chart-title">
                     House Allegiances of Deceased Characters
                 </div>
-                <div class="chart-stage">
+                <div class="chart-stage" data-step="1"
+                                 data-intro="This Pie chart shows the Allegiance of Deceased Characters"
+                                 style="font-weight: normal" data-position="right">
                     <div id="chart­alligance"></div>
                 </div>
             </div>
@@ -52,17 +54,29 @@
                     Gender of Deceased
                 </div>
                 <div class="chart-stage">
-                    <div id="chart­gender"></div>
+                    <div id="chart­gender"data-step="2"
+                                 data-intro="This Pie chart shows the Gender of Deceased Characters"
+                                 style="font-weight: normal" data-position="right"></div>
                 </div>
             </div>
         </div>
+
         <div class="col-md-3">
             <div class="chart-wrapper">
                 <div class="chart-title">
                     Social Standing of Deceased
                 </div>
                 <div class="chart-stage">
-                    <div id="chart­nobility"></div>
+                    <div id="chart­nobility" data-step="3"
+                                 data-intro="This Pie chart shows the Nobility of Deceased Characters"
+                                 style="font-weight: normal" data-position="right"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="chart-wrapper">
+                <div class="chart-stage">
+                    <img class="image" src="../static/css/ironmap3.jpeg">
                 </div>
             </div>
         </div>
@@ -74,37 +88,58 @@
                     Death per Book
                 </div>
                 <div class="chart-stage">
-                    <div id="chart­line­deaths-per-book"></div>
+                    <div id="chart­line­deaths-per-book" data-step="4"
+                                 data-intro="This Pie chart shows the Book in which Characters died"
+                                 style="font-weight: normal" data-position="right"></div>
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
             <div class="chart-wrapper">
                 <div class="chart-title">
-                    Aggresser in Battle
+                    Aggressor in Battle
                 </div>
                 <div class="chart-stage">
-                    <div id="chart­attacker"></div>
+                    <div id="chart­attacker" data-step="5"
+                                 data-intro="This Pie chart shows the Attacking house for each battle"
+                                 style="font-weight: normal" data-position="right"></div>
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
             <div class="chart-wrapper">
                 <div class="chart-title">
                     Victim of Battle
                 </div>
                 <div class="chart-stage">
-                    <div id="chart­deffender"></div>
+                    <div id="chart­deffender"data-step="6"
+                                 data-intro="This Pie chart shows the defending house for each battle"
+                                 style="font-weight: normal" data-position="right"></div>
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
+
+        <div class="col-md-4">
             <div class="chart-wrapper">
                 <div class="chart-title">
                     Type of Battle
                 </div>
                 <div class="chart-stage">
-                    <div id="chart­battle-type"></div>
+                    <div id="chart­battle-type" data-step="7"
+                                 data-intro="This Pie chart shows the Type of Battle"
+                                 style="font-weight: normal" data-position="right"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="chart-wrapper">
+                <div class="chart-title">
+                    Social Network of Who has been Attacking Who
+                </div>
+                <div class="chart-stage">
+                    <div id="bubbles" data-step="8"
+                                 data-intro="This graph represents the social network of battles"
+                                 style="font-weight: normal" data-position="right"></div>
                 </div>
             </div>
         </div>
@@ -115,6 +150,7 @@
 
 
 
+<p class="small text-muted">&#9824; &#9827; &#9829; &#9830; Data from Scott Woodbyrne</p>
 
 <script src="../static/js/intro.js" type="text/javascript"></script>
 <script src="../static/lib/js/jquery.min.js"></script>
@@ -125,96 +161,8 @@
 <script src="../static/lib/js/queue.js"></script>
 <script src="../static/lib/js/keen.min.js"></script>
 <script src="../static/js/graph.js" type="text/javascript"></script>
+<script src="../static/js/force.js" type="text/javascript"></script>
 
-{#<script type="text/javascript">#}
-{#			//Width and height#}
-{#			var w = 1000;#}
-{#			var h = 1000;#}
-{#			//Original data#}
-{#			var dataset = {#}
-{#				people: [#}
-{#					{ name: "Adam", r: 10 },#}
-{#					{ name: "Bob", r: 10 },#}
-{#					{ name: "Carrie", r: 10 },#}
-{#					{ name: "Donovan", r: 10 },#}
-{#					{ name: "Edward", r: 40 },#}
-{#					{ name: "Felicity", r: 25 },#}
-{#					{ name: "George", r: 15 },#}
-{#					{ name: "Hannah", r: 5 },#}
-{#					{ name: "Iris", r: 30 },#}
-{#					{ name: "Jerry", r: 20 }#}
-{#				],#}
-{#				killed: [#}
-{#					{ source: 0, target: 1 },#}
-{#					{ source: 0, target: 2 },#}
-{#					{ source: 0, target: 3 },#}
-{#					{ source: 0, target: 4 },#}
-{#					{ source: 1, target: 5 },#}
-{#					{ source: 2, target: 5 },#}
-{#					{ source: 2, target: 5 },#}
-{#					{ source: 3, target: 4 },#}
-{#					{ source: 5, target: 8 },#}
-{#					{ source: 5, target: 9 },#}
-{#					{ source: 6, target: 7 },#}
-{#					{ source: 7, target: 8 },#}
-{#					{ source: 8, target: 9 }#}
-{#				]#}
-{#			};#}
-{#			//Initialize a default force layout, using the nodes and edges in dataset#}
-{#			var force = d3.layout.force()#}
-{#								 .nodes(dataset.people)#}
-{#								 .links(dataset.killed)#}
-{#								 .size([w, h])#}
-{#								 .linkDistance([100])#}
-{#								 .charge([-100])#}
-{#								 .start();#}
-{#			var colors = d3.scale.category10();#}
-{#			//Create SVG element#}
-{#			var svg = d3.select("body")#}
-{#						.append("svg")#}
-{#						.attr("width", w)#}
-{#						.attr("height", h);#}
-{#//			//Create edges as lines#}
-{#//			var lines = svg.selectAll("line")#}
-{#//				.data(dataset.killed)#}
-{#//				.enter()#}
-{#//				.append("line")#}
-{#//				.style("stroke", "#ccc")#}
-{#//				.style("stroke-width", 1);#}
-{#			//Create nodes as circles#}
-{#			var circles = svg.selectAll("circle")#}
-{#				.data(dataset.people)#}
-{#				.enter()#}
-{#				.append("circle")#}
-{#				.attr("r", function(d){#}
-{#                    return d.r;#}
-{#                })#}
-{#				.style("fill", function(d, i) {#}
-{#					return colors(i);#}
-{#				})#}
-{#				.attr("opacity", "0.5")#}
-{#				.call(force.drag);#}
-{#			var text = svg.selectAll("text")#}
-{#			   .data(dataset.people)#}
-{#			   .enter()#}
-{#			   .append("text")#}
-{#			   .text(function (d) {#}
-{#				   return d.name;#}
-{#			   })#}
-{#			   .attr("text-anchor", "middle")#}
-{#			   .attr("font-family", "sans-serif")#}
-{#			   .attr("font-size", "11px");#}
-{#			//Every time the simulation "ticks", this will be called#}
-{#			force.on("tick", function() {#}
-{#//				lines.attr("x1", function(d) { return d.source.x; })#}
-{#//					 .attr("y1", function(d) { return d.source.y; })#}
-{#//					 .attr("x2", function(d) { return d.target.x; })#}
-{#//					 .attr("y2", function(d) { return d.target.y; });#}
-{#				circles.attr("cx", function(d) { return d.x; })#}
-{#					 .attr("cy", function(d) { return d.y; });#}
-{#				text.attr("x", function(d) { return d.x; })#}
-{#					 .attr("y", function(d) { return d.y; });#}
-{#			});#}
-{#		</script>#}
+
 </body>
 </html>

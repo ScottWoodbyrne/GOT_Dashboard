@@ -59,7 +59,7 @@
 								 .links(dataset.killed)
 								 .size([w, h])
 								 .linkDistance([120])
-								 .charge([-1000])
+								 .charge([-1500])
 								 .start();
 			var colors = d3.scale.category20c();
 			//Create SVG element

@@ -62,7 +62,7 @@ function makeGraphs(error, dataJson, dataBattlesJson) {
             d.Book_of_Death="5:A dance with Dragons"
         }
         else{
-            d.Book_of_Death="0:Outside of I&F Series"
+            d.Book_of_Death="0:Outside of Ice and Fire Timeline"
         }
 
     });

@@ -7,8 +7,8 @@
 			//Original data
 			var dataset = {
 				people: [
-					{ name: "Stark", r: 50 },
-					{ name: "Baratheon", r: 35 },
+					{ name: "Stark", r: 80 },
+					{ name: "Baratheon", r: 60 },
 					{ name: "Bolton", r: 35 },
 					{ name: "Bracken", r: 20 },
 					{ name: "Brave Companions", r: 35 },
@@ -16,7 +16,7 @@
 					{ name: "Darry", r: 25 },
 					{ name: "Free Folk", r: 20 },
 					{ name: "Frey", r: 25 },
-					{ name: "Greyjoy", r: 50 },
+					{ name: "Greyjoy", r: 70 },
                     { name: "Lannister", r: 80 },
                     { name: "Tully", r: 20 },
                     { name: "Tyrell", r: 20 },

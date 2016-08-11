@@ -95,7 +95,7 @@
 				   return d.name;
 			   })
 			   .attr("text-anchor", "middle")
-			   .attr("font-family", "sans-serif")
+			   .attr("font-family", "GameOfThrones")
 			   .attr("font-size", "11px");
 			//Every time the simulation "ticks", this will be called
 			force.on("tick", function() {

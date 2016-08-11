@@ -14,16 +14,18 @@
         jQuery('#overlay').fadeOut(8000);
     })
     </script>
+
 </head>
 
-<body class="application">
+<body class="application" style="">
 
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="./">Game of Death Toll Dashboard</a>
+
+            <button class="introjs-button" autofocus onclick="javascript:introJs().start();">Start the tour!</button>
         </div>
-        <button class="introjs-button" autofocus onclick="javascript:introJs().start();">Start the tour!</button>
     </div>
 </div>
 <div id="outer" class="container-fluid">
@@ -31,6 +33,7 @@
         <br><br><br><br>
         <h1>Loading...</h1>
     </div>
+
 
 
 <div class="container">
@@ -69,7 +72,7 @@
                 <div class="chart-stage">
                     <div id="chart­nobility" data-step="3"
                                  data-intro="This Pie chart shows the Nobility of Deceased Characters"
-                                 style="font-weight: normal" data-position="right"></div>
+                                 style="font-weight: normal" data-position="left"></div>
                 </div>
             </div>
         </div>
@@ -90,7 +93,7 @@
                 <div class="chart-stage">
                     <div id="chart­line­deaths-per-book" data-step="4"
                                  data-intro="This Pie chart shows the Book in which Characters died"
-                                 style="font-weight: normal" data-position="right"></div>
+                                 style="font-weight: normal" data-position="top"></div>
                 </div>
             </div>
         </div>
@@ -161,9 +164,10 @@
 <script src="../static/lib/js/dc.js"></script>
 <script src="../static/lib/js/queue.js"></script>
 <script src="../static/lib/js/keen.min.js"></script>
+
+
 <script src="../static/js/graph.js" type="text/javascript"></script>
 <script src="../static/js/force.js" type="text/javascript"></script>
-
 
 </body>
 </html>

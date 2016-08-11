@@ -31,7 +31,7 @@ function makeGraphs(error, dataJson, dataBattlesJson) {
     data.forEach(function(d){
 
         d.Allegiances = d.Allegiances.replace("House ", "")
-        d.Allegiances = d.Allegiances.replace("None", "No know Allegiances ")
+        d.Allegiances = d.Allegiances.replace("None", "No known Allegiances")
         if (d.Nobility == 1){
             d.Nobility="Noble"
         }
@@ -101,8 +101,7 @@ function makeGraphs(error, dataJson, dataBattlesJson) {
     .dimension(deathBookDim)
     .group(deathBookGroup)
     .x(d3.scale.ordinal())
-    .xUnits(dc.units.ordinal)
-    .yAxisLabel("Number of Deaths");
+    .xUnits(dc.units.ordinal);
 
 
 
@@ -179,11 +178,8 @@ function makeGraphs(error, dataJson, dataBattlesJson) {
     .dimension(battleTypeDim)
     .group(battleTypeByNumber);
 
-
-
-    
-
     dc.renderAll();
 
-    
 };
+
+

@@ -1,4 +1,10 @@
-
+@font-face {
+    font-family: GameOfThrones;
+    src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/29725/got.ttf);
+}
+body{
+    font-family: GameOfThrones;
+}
 #number-projects-nd {
     font-size: 60px;
 }
@@ -75,3 +81,6 @@
     height: 290px;
     width: 550px;
 }
+
+
+

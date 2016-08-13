@@ -90,10 +90,25 @@ function makeGraphs(error, dataJson, dataBattlesJson) {
     var deathBookDim = ndx.dimension(function(d){
         return d.Book_of_Death;
     });
+    
+    var all = ndx.groupAll();
+    var totalDead = ndx.groupAll().reduceSum(function (d) {
+        return d.Book_of_Death;
+    });
 
-    var deathBookGroup = deathBookDim.group()
+    var deathBookGroup = deathBookDim.group();
+    
+    var totalDeadND = dc.numberDisplay("#total-Dead-nd");
 
-
+    totalDeadND
+        .formatNumber(d3.format(",d"))
+        .valueAccessor(function (d) {
+            return d;
+        })
+        .group(all)
+        .formatNumber(d3.format(".3s"))
+    
+    
     var deathLineChart = dc.barChart("#chart­line­deaths-per-book");
     deathLineChart
     .width(1150)

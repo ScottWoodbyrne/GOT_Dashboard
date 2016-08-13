@@ -82,5 +82,13 @@ body{
     width: 550px;
 }
 
-
-
+#total-Dead-nd {
+    position: relative;
+    font-size: 150px;
+    height: 260px;
+    vertical-align: top;
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 20px;
+}

@@ -5,28 +5,31 @@ queue()
     .defer(d3.json, "/GOT/Battles")
     .await(makeGraphs);
 
+
 function makeGraphs(error, dataJson, dataBattlesJson) {
     var data = dataJson;
-    // console.log(dataBattlesJson)
+    
     var dataBattles = dataBattlesJson;
     
     function print_filter(filter) {
-    var f = eval(filter);
-    if (typeof (f.length) != "undefined") {} else {}
-    if (typeof (f.top) != "undefined") {f = f.top(Infinity);} else {}
-    if (typeof (f.dimension) != "undefined")
-    {f = f.dimension(function(d) {
-    return "";}).top(Infinity);
+        var f = eval(filter);
+        if (typeof (f.length) != "undefined") {} else {}
+        if (typeof (f.top) != "undefined") {f = f.top(Infinity);} else {}
+        if (typeof (f.dimension) != "undefined")
+            {f = f.dimension(function(d) {
+            return "";}).top(Infinity);
+            }
+        else
+        {}
+        console.log(
+        filter + "(" + f.length + ") = " +
+        JSON.stringify(f)
+        .replace("[","[\n\t")
+        .replace("]","\n]")
+        );
     }
-    else
-    {}
-    console.log(
-    filter + "(" + f.length + ") = " +
-    JSON.stringify(f)
-    .replace("[","[\n\t")
-    .replace("]","\n]")
-    );
-    }
+
+// Start data clensing 
 
     data.forEach(function(d){
 
@@ -66,7 +69,11 @@ function makeGraphs(error, dataJson, dataBattlesJson) {
         }
 
     });
-
+    
+// End data cleansing
+    
+// Start Characters cross filter
+    
     var ndx = crossfilter(data);
 
     var allegiancesDim = ndx.dimension(function(d){
@@ -108,6 +115,10 @@ function makeGraphs(error, dataJson, dataBattlesJson) {
         .group(all)
         .formatNumber(d3.format(".3s"))
     
+// End Characters Crossfilter
+    
+    
+// Start Characters Drawgraphs
     
     var deathLineChart = dc.barChart("#chart­line­deaths-per-book");
     deathLineChart
@@ -117,10 +128,7 @@ function makeGraphs(error, dataJson, dataBattlesJson) {
     .group(deathBookGroup)
     .x(d3.scale.ordinal())
     .xUnits(dc.units.ordinal);
-
-
-
-
+    
     var hitspieChart = dc.pieChart("#chart­alligance");
     hitspieChart
     .width(560)
@@ -128,8 +136,7 @@ function makeGraphs(error, dataJson, dataBattlesJson) {
     .innerRadius(50)
     .dimension(allegiancesDim)
     .group(deathsByAllegiance);
-
-
+    
     var genderpieChart = dc.pieChart("#chart­gender");
     genderpieChart
     .width(250)
@@ -148,7 +155,12 @@ function makeGraphs(error, dataJson, dataBattlesJson) {
     .dimension(nobilityDim)
     .group(deathsByNobility);
 
-    // battles logic
+    
+// End Characters Drawgraphs
+    
+    
+// Start Battles Crossfilter
+
     var ndxbat = crossfilter(dataBattles);
 
     var attackerDim = ndxbat.dimension(function(d){
@@ -169,6 +181,10 @@ function makeGraphs(error, dataJson, dataBattlesJson) {
 
     var battleTypeByNumber = battleTypeDim .group();
 
+// End Battles Crossfilter
+    
+// Start Battles DrawGraphs
+    
     var attackerChart = dc.pieChart("#chart­attacker");
     attackerChart
     .width(300)
@@ -192,7 +208,11 @@ function makeGraphs(error, dataJson, dataBattlesJson) {
     .innerRadius(50)
     .dimension(battleTypeDim)
     .group(battleTypeByNumber);
-
+    
+    
+//end Battles DrawGraph
+    
+    
     dc.renderAll();
 
 };

@@ -10,6 +10,17 @@ Application created using flask framework on PyCharm. Dashborad data sourced fro
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request :D
 
+## Requirements
+click==6.6
+Flask==0.11.1
+gunicorn==19.6.0
+itsdangerous==0.24
+Jinja2==2.8
+MarkupSafe==0.23
+pymongo==3.2.2
+Werkzeug==0.11.10
+
+
 </content>
 
 </snippet>

@@ -1,7 +1,7 @@
 <snippet>
   <content>
-# 1:Game Of Death Dashboard
-Dashboard created using data from https://www.kaggle.com/mylesoneill/game-of-thrones. Interactive charts and graph created using CrossFilter.js DS.js and D3.js. Deployed working version can be found @ https://mighty-scrubland-92918.herokuapp.com
+# Game Of Death Dashboard
+Application created using flask framework on PyCharm. Dashborad data sourced from https://www.kaggle.com/mylesoneill/game-of-thrones. Interactive charts and graph created using CrossFilter.js DS.js and D3.js. Deployed working version can be found @ https://mighty-scrubland-92918.herokuapp.com
 
 ## Contributing
 1. Fork it!
@@ -11,5 +11,5 @@ Dashboard created using data from https://www.kaggle.com/mylesoneill/game-of-thr
 5. Submit a pull request :D
 
 </content>
-  
+
 </snippet>
